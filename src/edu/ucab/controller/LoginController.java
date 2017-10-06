@@ -31,7 +31,6 @@ public class LoginController {
                 || !user.isEmpty())) {
             Optional<Usuario> optUsr = usuarioFacade.findByName(user);
             if (optUsr.isPresent()) {
-                System.out.println("encontró a " + optUsr.get().getName());
                 Usuario usr = optUsr.get();
                 if (user.equalsIgnoreCase(usr.getUsername())
                         && psw.equals(usr.getPsw())) {

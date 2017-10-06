@@ -125,7 +125,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.ucab.model.Usuario[ id=" + id + " ]";
+        return name + " " + surname;
     }
     
 }
