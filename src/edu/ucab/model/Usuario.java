@@ -20,16 +20,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jgcastillo
  */
 @Entity
-@Table(name = "APP.USUARIO")
+@Table(name = "USUARIO")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
     , @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id")
-    , @NamedQuery(name = "Usuario.findByUsername", query = "SELECT u FROM Usuario u WHERE u.username = :username")
-    , @NamedQuery(name = "Usuario.findByPsw", query = "SELECT u FROM Usuario u WHERE u.psw = :psw")
+    , @NamedQuery(name = "Usuario.findByCi", query = "SELECT u FROM Usuario u WHERE u.ci = :ci")
     , @NamedQuery(name = "Usuario.findByName", query = "SELECT u FROM Usuario u WHERE u.name = :name")
+    , @NamedQuery(name = "Usuario.findByPsw", query = "SELECT u FROM Usuario u WHERE u.psw = :psw")
     , @NamedQuery(name = "Usuario.findBySurname", query = "SELECT u FROM Usuario u WHERE u.surname = :surname")
-    , @NamedQuery(name = "Usuario.findByCi", query = "SELECT u FROM Usuario u WHERE u.ci = :ci")})
+    , @NamedQuery(name = "Usuario.findByUsername", query = "SELECT u FROM Usuario u WHERE u.username = :username")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,16 +37,16 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
-    @Column(name = "USERNAME")
-    private String username;
-    @Column(name = "PSW")
-    private String psw;
-    @Column(name = "NAME")
-    private String name;
-    @Column(name = "SURNAME")
-    private String surname;
     @Column(name = "CI")
     private Integer ci;
+    @Column(name = "NAME")
+    private String name;
+    @Column(name = "PSW")
+    private String psw;
+    @Column(name = "SURNAME")
+    private String surname;
+    @Column(name = "USERNAME")
+    private String username;
 
     public Usuario() {
     }
@@ -63,20 +63,12 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public Integer getCi() {
+        return ci;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPsw() {
-        return psw;
-    }
-
-    public void setPsw(String psw) {
-        this.psw = psw;
+    public void setCi(Integer ci) {
+        this.ci = ci;
     }
 
     public String getName() {
@@ -87,6 +79,14 @@ public class Usuario implements Serializable {
         this.name = name;
     }
 
+    public String getPsw() {
+        return psw;
+    }
+
+    public void setPsw(String psw) {
+        this.psw = psw;
+    }
+
     public String getSurname() {
         return surname;
     }
@@ -95,12 +95,12 @@ public class Usuario implements Serializable {
         this.surname = surname;
     }
 
-    public Integer getCi() {
-        return ci;
+    public String getUsername() {
+        return username;
     }
 
-    public void setCi(Integer ci) {
-        this.ci = ci;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
@@ -125,7 +125,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return name + " " + surname;
+        return "edu.ucab.model.Usuario[ id=" + id + " ]";
     }
     
 }
